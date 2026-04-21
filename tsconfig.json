@@ -7,17 +7,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*"]
-    },
-    "types": ["node", "playwright-test"] // Garante que o TypeScript reconheça os tipos do Node e Playwright
+    "types": ["node", "@playwright/test"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["node_modules"]
 }
