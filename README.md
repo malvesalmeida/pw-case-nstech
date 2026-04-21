@@ -98,27 +98,25 @@ O projeto foi estruturado com foco em:
 
 **COMO EXECUTAR O PROJETO LOCALMENTE**
 
-1. Clonar o repositório
-git clone <url-do-repo>
-cd <nome-do-projeto>
+> git clone <url-do-repo> - clona o repositório
 
-2. npm install - instala as dependências necessárias (inclusive o Playwright) de acordo com as configurações disponíveis nos arquivos package.json e package.lock.json
+> npm install - instala as dependências necessárias (inclusive o Playwright) de acordo com as configurações disponíveis nos arquivos package.json e package.lock.json
 
-3. npx playwright install - instala os browsers no Playwright
+> npx playwright install - instala os browsers no Playwright
 
-4. npx playwright test - executa todos os testes em modo headless (sem abrir interface ou navegador)
+> npx playwright test - executa todos os testes em modo headless (sem abrir interface ou navegador)
 
-5. npx playwright test --headed – executa todos os testes abrindo o navegador
+> npx playwright test --headed – executa todos os testes abrindo o navegador
 
-6. npx playwright test --ui – abre uma interface do Playwright e permite executar todos ou um a um
+> npx playwright test --ui – abre uma interface do Playwright e permite executar todos ou um a um
 
-7. npx playwright test tests/e2e/meuTeste.spec.ts - executa um teste específico
+> npx playwright test tests/e2e/meuTeste.spec.ts - executa um teste específico
 
-8. npx playwright test --debug – executa os testes em modo debug
+> npx playwright test --debug – executa os testes em modo debug
 
-9. npx playwright show-report - abre o relatório da execução em html
+> npx playwright show-report - abre o relatório da execução em html
 
-10. npx playwright show-trace trace.zip - abre o trace (debug avançado)
+> npx playwright show-trace trace.zip - abre o trace (debug avançado)
 -------------------------------------------------------------------------------------------------------------------------------
 
 **EXECUÇÃO ONLINE (CI)**
@@ -141,3 +139,10 @@ O relatório contém:
 - Execução paralela otimizada
 - Evolução e padronização dos Page Objects (POM)
 - Adoção de Cucumber/BDD, caso seja viável para a equipe e o produto
+
+----------------------------------------------------------------------------------------------------------
+**CONSIDERAÇÕES FINAIS**
+
+O pipeline foi estruturado para ser executado automaticamente após o deploy da aplicação.
+Ele permite validar a aplicação em diferentes ambientes apenas ajustando a URL de execução.
+Assim, é possível garantir a qualidade da aplicação após cada nova versão.
