@@ -4,11 +4,16 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -17,7 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
+          cache: 'npm' 
       - name: Instalar dependências
         run: npm ci
 
@@ -27,16 +32,28 @@ jobs:
       - name: Rodar testes
         run: npx playwright test
 
-      - name: Upload do relatório
+      - name: Upload do relatório (Artifact)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report/
+          retention-days: 30
 
-      - name: Upload dos resultados dos testes
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Upload para GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: test-results
-          path: test-results/
+          path: playwright-report/
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
