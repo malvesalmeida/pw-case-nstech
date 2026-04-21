@@ -143,6 +143,6 @@ O relatório contém:
 ----------------------------------------------------------------------------------------------------------
 **CONSIDERAÇÕES FINAIS**
 
-O pipeline foi estruturado para ser executado automaticamente após o deploy da aplicação.
+O pipeline foi estruturado para ser executado automaticamente após o deploy.
 Ele permite validar a aplicação em diferentes ambientes apenas ajustando a URL de execução.
-Assim, é possível garantir a qualidade da aplicação após cada nova versão.
+Assim, é possível garantir qualidade após cada nova versão.
