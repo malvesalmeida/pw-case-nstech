@@ -5,7 +5,7 @@ Case técnico para testes WEB e API - nstech
 
 | Framework | Linguagem | Camadas | Reports | CI/CD (Bônus)
 | :---: | :---: | :---: | :---: |:---: |
-| Playwright | Typescript | Frontend e Backend | Nativo do Playwright acessível via Github Pages|GitHub Actions
+| Playwright | Typescript | Frontend e Backend | [Nativo do Playwright acessível via Github Pages](https://malvesalmeida.github.io/pw-case-nstech/)|GitHub Actions
 
 ----------------------------------------------------------------------------------------------
 
