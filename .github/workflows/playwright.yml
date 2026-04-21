@@ -9,6 +9,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy-pages.outputs.page_url }}
+
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -40,3 +49,14 @@ jobs:
         with:
           name: test-results
           path: test-results/
+
+      - name: Upload para GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report/
+
+      - name: Deploy GitHub Pages
+        if: always()
+        id: deploy-pages
+        uses: actions/deploy-pages@v4
